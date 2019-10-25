@@ -11,6 +11,8 @@ function calculateAverageMovieRate (array){
 }
 calculateAverageMovieRate(MOVIES);
 
+
+
 // Iteration 2: Drama movies - Get the average of Drama Movies
 function calculateAverageDramaRate(newArray) {
     const filteredArray = newArray.filter((value) => {
@@ -28,9 +30,9 @@ function calculateAverageDramaRate(newArray) {
 
 function orderByYear (array) { 
     let orderedArray = array.sort((a, b) => { 
-        if(a.year === b.year && a.title > b.title){ 
+        if(a.year === b.year && a.title.toLowerCase() > b.title.toLowerCase()){ 
             return 1;
-        } else if(a.year === b.year && a.title < b.title) { 
+        } else if(a.year === b.year && a.title.toLowerCase() < b.title.toLowerCase()) { 
             return -1;
         } else if (a.year > b.year) { 
             return 1;
@@ -74,17 +76,54 @@ function orderAlphabetically (array) {
         const topTwenty = titles.slice(0, 20); 
         return topTwenty; 
     }
-    
-    
-    
-    
-    
+        
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
 
-function turnHoursToMinutes (array) {
+function turnHoursToMinutes (movies) {
+    return movies.map((movie) => {
+        const duration = movie.duration.split('');
+        let minutes = 0;
+        for (let time of duration) {
+            if (time.includes('h')) {
+                minutes += parseInt(time)*60;
+            } else {
+                minutes += parseInt(time)
+            }
+        }
+
+        return {
+            ...movie,
+            duration: minutes
+        };
+    });
+
 
 }
 
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
+
+//following along in class not complete
+
+function bestYearAvg () {
+    if 
+    
+  const moviesRateYearly = movies.reduce((acccumulator,movie) =>
+  {
+      const { year, rate} = movie;
+      if (!acccumulator[year]) {
+          acccumulator[year]=[];
+      }
+      acccumulator[year].push(rate);
+      return accumalator;
+  }) {});
+  Object.entries(moviesRateYearly).map((item => {
+      const year = item[0];
+      const rateArray = item[1];
+      const avarageRte = rateArray.reduce ((sum,value) => sum + (value/array.length, 0);
+      return { year, avarageRate};
+  })
+.reduce ((bestItem, Item) => )
+}
+}
 
 
